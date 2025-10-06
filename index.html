@@ -17,14 +17,12 @@
 <canvas id="outComboChart" width="600" height="300"></canvas>
 <canvas id="weightInComboChart" width="600" height="300"></canvas>
 <canvas id="allDataChart" width="600" height="300"></canvas>
-
 <script>
 fetch('/data')
   .then(res => res.json())
   .then(data => {
     const labels = data.map(e => e.timestamp);
 
-    // Individual graphs
     new Chart(weightChart, { type:'line', data:{labels, datasets:[
       {label:'Weight', data:data.map(e=>e.weight), borderColor:'blue'}
     ]}});
@@ -46,8 +44,6 @@ fetch('/data')
     new Chart(pressOutChart, { type:'line', data:{labels, datasets:[
       {label:'Outside Pressure', data:data.map(e=>e.press_out), borderColor:'teal'}
     ]}});
-
-    // Combo graphs
     new Chart(inComboChart, { type:'line', data:{labels, datasets:[
       {label:'Inside Temp', data:data.map(e=>e.temp_in), borderColor:'red', fill:false},
       {label:'Inside Humidity', data:data.map(e=>e.hum_in), borderColor:'green', fill:false}
