@@ -56,7 +56,7 @@ def log_data():
         with sqlite3.connect(DB_FILE) as conn:
             conn.execute("INSERT INTO samples VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                          (ts, total_w, w1, w2, w3, w4, t_in, h_in, t_out, h_out, p_in, p_out))
-        time.sleep(900)  # 15 minutes
+        time.sleep(900)
 
 @app.route("/")
 def index():
