@@ -1,5 +1,0 @@
-flask
-hx711
-adafruit-circuitpython-bme280
-board
-busio
