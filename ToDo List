@@ -1,0 +1,12 @@
+Alarms sent to email
+•	Swarm detect – a 1.5kg change or more in weight over a 15min period
+•	Full honey super – alarm set in settings when you put on the honey super. A separate weight measurement that you zeroise when the honey super is placed on. You then set an alarm weight which when reached sends an email.
+
+Web page setting
+•	Settings for swarm detect: minimum weight decrease, weight change over a period, turn alarm on and off.
+•	Settings for full honey super detect: zeroise a weight measurement, weight increase change, turn alarm on and off.
+•	Able to change sender email address and recipient email address
+•	Change logging rate
+•	A disable setting to attend the hive without setting off an alarm
+•	Hive name for webpage
+Allow access to the webpage even if the sensors are not connected
