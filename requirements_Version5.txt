@@ -3,3 +3,4 @@ hx711
 adafruit-circuitpython-bme280
 adafruit-blinka
 board
+RPi.GPIO
