@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beehive Environment Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h1>Beehive Monitor</h1>
+<canvas id="weightChart" width="600" height="300"></canvas>
+<canvas id="tempInChart" width="600" height="300"></canvas>
+<canvas id="humInChart" width="600" height="300"></canvas>
+<canvas id="tempOutChart" width="600" height="300"></canvas>
+<canvas id="humOutChart" width="600" height="300"></canvas>
+<canvas id="pressInChart" width="600" height="300"></canvas>
+<canvas id="pressOutChart" width="600" height="300"></canvas>
+<canvas id="inComboChart" width="600" height="300"></canvas>
+<canvas id="outComboChart" width="600" height="300"></canvas>
+<canvas id="weightInComboChart" width="600" height="300"></canvas>
+<canvas id="allDataChart" width="600" height="300"></canvas>
+
+<script>
+fetch('/data')
+  .then(res => res.json())
+  .then(data => {
+    const labels = data.map(e => e.timestamp);
+
+    // Individual graphs
+    new Chart(weightChart, { type:'line', data:{labels, datasets:[
+      {label:'Weight', data:data.map(e=>e.weight), borderColor:'blue'}
+    ]}});
+    new Chart(tempInChart, { type:'line', data:{labels, datasets:[
+      {label:'Inside Temp', data:data.map(e=>e.temp_in), borderColor:'red'}
+    ]}});
+    new Chart(humInChart, { type:'line', data:{labels, datasets:[
+      {label:'Inside Humidity', data:data.map(e=>e.hum_in), borderColor:'green'}
+    ]}});
+    new Chart(tempOutChart, { type:'line', data:{labels, datasets:[
+      {label:'Outside Temp', data:data.map(e=>e.temp_out), borderColor:'orange'}
+    ]}});
+    new Chart(humOutChart, { type:'line', data:{labels, datasets:[
+      {label:'Outside Humidity', data:data.map(e=>e.hum_out), borderColor:'purple'}
+    ]}});
+    new Chart(pressInChart, { type:'line', data:{labels, datasets:[
+      {label:'Inside Pressure', data:data.map(e=>e.press_in), borderColor:'navy'}
+    ]}});
+    new Chart(pressOutChart, { type:'line', data:{labels, datasets:[
+      {label:'Outside Pressure', data:data.map(e=>e.press_out), borderColor:'teal'}
+    ]}});
+
+    // Combo graphs
+    new Chart(inComboChart, { type:'line', data:{labels, datasets:[
+      {label:'Inside Temp', data:data.map(e=>e.temp_in), borderColor:'red', fill:false},
+      {label:'Inside Humidity', data:data.map(e=>e.hum_in), borderColor:'green', fill:false}
+    ]}});
+    new Chart(outComboChart, { type:'line', data:{labels, datasets:[
+      {label:'Outside Temp', data:data.map(e=>e.temp_out), borderColor:'orange', fill:false},
+      {label:'Outside Humidity', data:data.map(e=>e.hum_out), borderColor:'purple', fill:false}
+    ]}});
+    new Chart(weightInComboChart, { type:'line', data:{labels, datasets:[
+      {label:'Weight', data:data.map(e=>e.weight), borderColor:'blue', fill:false},
+      {label:'Inside Temp', data:data.map(e=>e.temp_in), borderColor:'red', fill:false},
+      {label:'Inside Humidity', data:data.map(e=>e.hum_in), borderColor:'green', fill:false}
+    ]}});
+    new Chart(allDataChart, { type:'line', data:{labels, datasets:[
+      {label:'Weight', data:data.map(e=>e.weight), borderColor:'blue', fill:false},
+      {label:'Inside Temp', data:data.map(e=>e.temp_in), borderColor:'red', fill:false},
+      {label:'Inside Humidity', data:data.map(e=>e.hum_in), borderColor:'green', fill:false},
+      {label:'Outside Temp', data:data.map(e=>e.temp_out), borderColor:'orange', fill:false},
+      {label:'Outside Humidity', data:data.map(e=>e.hum_out), borderColor:'purple', fill:false},
+      {label:'Inside Pressure', data:data.map(e=>e.press_in), borderColor:'navy', fill:false},
+      {label:'Outside Pressure', data:data.map(e=>e.press_out), borderColor:'teal', fill:false}
+    ]}});
+  });
+</script>
+</body>
+</html>
